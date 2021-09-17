@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
-    public static int score;
+    public static float score;
+    public float budget;
 
     Text text;
 
@@ -14,12 +15,13 @@ public class MoneyManager : MonoBehaviour
     {
         text = GetComponent<Text>();
 
-        score = 5000;
+        score = budget;
     }
 
     // Update is called once per frame
     void Update()
     {
+        score += Mathf.Round(ProfitTracker.totalProfit * 100.0f) *0.01f* Time.deltaTime;
         text.text = "Budget: $ " + score;
     }
 }

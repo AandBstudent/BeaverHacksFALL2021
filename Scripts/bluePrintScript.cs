@@ -9,6 +9,7 @@ public class bluePrintScript : MonoBehaviour
     public GameObject textPrefab;
     public int buildCost;
     public int watt;
+    public float capacity;
 
     Vector3 placement;
     float gridSize = 1;
@@ -41,6 +42,7 @@ public class bluePrintScript : MonoBehaviour
             MoneyManager.score -= buildCost;
             WattManager.wattTotal += watt;
             EnergyManager.energyTotal += (float) watt / 1000;
+            CapacityTracker.capacityTotal += capacity;
             Destroy(gameObject);
         }
 

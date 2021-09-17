@@ -14,6 +14,13 @@ public class MousePosition3D : MonoBehaviour
         {
             transform.position = raycastHit.point;
         }
+
+        if(CapacityTracker.capacityTotal > 0 )
+        {
+            EnergyManager.energyTotal += 0.01f * Time.deltaTime;
+        }
+
+        // Houses use energy
     }
 
 }

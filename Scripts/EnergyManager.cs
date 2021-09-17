@@ -8,7 +8,6 @@ public class EnergyManager : MonoBehaviour
     public static float energyTotal;
 
     Text text;
-
     
     void Awake()
     {
@@ -20,6 +19,6 @@ public class EnergyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Energy: " + energyTotal;
+        text.text = "Energy: " + Mathf.Round(energyTotal *100.0f)*0.01f + " kWh";
     }
 }
