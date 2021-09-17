@@ -21,13 +21,17 @@ public class bluePrintScript : MonoBehaviour
         string prefabName = prefab.name;
         if (Input.GetMouseButton(0))
         {
-            if(prefabName == "RR_solar_array")
+            if (prefabName == "RR_solar_array")
             {
                 placement.y = 0.5f;
             }
             else if (prefabName == "RR_battery")
             {
                 placement.y = 0.25f;
+            }
+            else if (prefabName == "RR_windTurbine")
+            {
+                placement.y = 1.5f;
             }
 
             placement.x = Mathf.Floor(transform.position.x / gridSize) * gridSize;

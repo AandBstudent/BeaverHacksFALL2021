@@ -6,6 +6,8 @@ public class MousePosition3D : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
 
+    public static float buildPlaced;
+
     private void Update()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -17,7 +19,7 @@ public class MousePosition3D : MonoBehaviour
 
         if(CapacityTracker.capacityTotal > 0 )
         {
-            EnergyManager.energyTotal += 0.01f * Time.deltaTime;
+            EnergyManager.energyTotal += buildPlaced * Time.deltaTime;
         }
 
         // Houses use energy

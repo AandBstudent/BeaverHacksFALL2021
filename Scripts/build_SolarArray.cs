@@ -6,6 +6,7 @@ public class build_SolarArray : MonoBehaviour
 {
     public GameObject bpSolarArray;
     public GameObject bpBattery;
+    public GameObject bpWindTurbine;
     public Transform parent;
 
    /* void Update()
@@ -18,12 +19,19 @@ public class build_SolarArray : MonoBehaviour
 
     public void spawn_BP()
     {
+        MousePosition3D.buildPlaced += 0.05f;
         Instantiate(bpSolarArray, parent);
     }
 
     public void spawn_BP_batteryP()
     {
         Instantiate(bpBattery, parent);
+    }
+
+    public void spawn_BP_windTurbine()
+    {
+        MousePosition3D.buildPlaced += 0.1f;
+        Instantiate(bpWindTurbine, parent);
     }
 
 }

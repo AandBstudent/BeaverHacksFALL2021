@@ -22,6 +22,6 @@ public class MoneyManager : MonoBehaviour
     void Update()
     {
         score += Mathf.Round(ProfitTracker.totalProfit * 100.0f) *0.01f* Time.deltaTime;
-        text.text = "Budget: $ " + score;
+        text.text = "Budget: $ " + Mathf.Round(score * 100.0f) * 0.01f;
     }
 }

@@ -22,7 +22,7 @@ public class ProfitTracker : MonoBehaviour
     {
         totalProfit = kwhCost * EnergyManager.energyTotal;
 
-        if (totalProfit < 100000)
+        if (totalProfit < 1000000000)
         {
             text.text = "Profit: $" +  Mathf.Round(totalProfit * 100.0f) * 0.01f + "/hr";
         }
