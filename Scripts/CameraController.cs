@@ -13,12 +13,17 @@ public class CameraController : MonoBehaviour
     public float rotationAmount;
     public Vector3 zoomAmount;
 
+    public float zoomMax;
+    public float zoomMin;
+
     public Vector3 newPosition;
     public Quaternion newRotation;
     public Vector3 newZoom;
 
     public Vector3 dragStartPosition;
     public Vector3 dragCurrentPosition;
+    public Vector3 rotateStartPosition;
+    public Vector3 rotateCurrentPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +31,7 @@ public class CameraController : MonoBehaviour
         newPosition = transform.position;
         newRotation = transform.rotation;
         newZoom = camerTransform.localPosition;
+        //Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -37,6 +43,12 @@ public class CameraController : MonoBehaviour
 
     void HandleMouseInput()
     {
+        // Zoom Camera in/out 
+        // 10 250
+        if(Input.mouseScrollDelta.y != 0)
+        {
+            newZoom += Input.mouseScrollDelta.y * zoomAmount;
+        }
         if(Input.GetMouseButtonDown(0))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
@@ -51,6 +63,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
+        // Drag position of camera
         if(Input.GetMouseButton(0))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
@@ -65,6 +78,22 @@ public class CameraController : MonoBehaviour
 
                 newPosition = transform.position + dragStartPosition - dragCurrentPosition;
             }
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            rotateStartPosition = Input.mousePosition;
+        }
+
+        if(Input.GetMouseButton(1))
+        {
+            rotateCurrentPosition = Input.mousePosition;
+
+            Vector3 difference = rotateStartPosition - rotateCurrentPosition;
+
+            rotateStartPosition = rotateCurrentPosition;
+
+            newRotation *= Quaternion.Euler(Vector3.up * (-difference.x / 5f));
         }
     }
 
@@ -102,7 +131,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Rotate Camera
-        if(Input.GetKey(KeyCode.Q))
+        /*if(Input.GetKey(KeyCode.Q))
         {
             newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
         }
@@ -110,10 +139,10 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             newRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
-        }
+        }*/
 
         // Zoom Camera In/Out
-        if(Input.GetKey(KeyCode.R))
+        /*if(Input.GetKey(KeyCode.R))
         {
             newZoom += zoomAmount;
         }
@@ -121,7 +150,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.F))
         {
             newZoom -= zoomAmount;
-        }
+        }*/
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * movementTime);

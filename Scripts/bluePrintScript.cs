@@ -6,26 +6,51 @@ public class bluePrintScript : MonoBehaviour
 {
 
     public GameObject prefab;
+    public GameObject textPrefab;
+    public int buildCost;
+    public int watt;
 
     Vector3 placement;
     float gridSize = 1;
+    
 
     // Update is called once per frame
     void Update()
     {
-
-        if(Input.GetMouseButton(0))
+        string prefabName = prefab.name;
+        if (Input.GetMouseButton(0))
         {
-            placement.x = Mathf.Floor(transform.position.x / gridSize) * gridSize;
-            placement.y = 0.5f;
-            placement.z = Mathf.Floor(transform.position.z / gridSize) * gridSize;
+            if(prefabName == "RR_solar_array")
+            {
+                placement.y = 0.5f;
+            }
+            else if (prefabName == "RR_battery")
+            {
+                placement.y = 0.25f;
+            }
 
+            placement.x = Mathf.Floor(transform.position.x / gridSize) * gridSize;
             
+            placement.z = Mathf.Floor(transform.position.z / gridSize) * gridSize;
+            
+            if(textPrefab)
+            {
+                ShowFloatingText();
+            }
             Instantiate(prefab, placement, transform.rotation);
+            MoneyManager.score -= buildCost;
+            WattManager.wattTotal += watt;
+            EnergyManager.energyTotal += (float) watt / 1000;
             Destroy(gameObject);
         }
 
 
-        Debug.Log(transform.position.y);
+        //Debug.Log(transform.position.y);
+    }
+
+    void ShowFloatingText()
+    {
+        var floatText = Instantiate(textPrefab, transform.position, Quaternion.identity);
+        floatText.GetComponent<TextMesh>().text = "$ " + buildCost.ToString();
     }
 }

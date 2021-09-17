@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class build_SolarArray : MonoBehaviour
 {
-    public GameObject bluePrint;
+    public GameObject bpSolarArray;
+    public GameObject bpBattery;
     public Transform parent;
 
    /* void Update()
@@ -17,6 +18,12 @@ public class build_SolarArray : MonoBehaviour
 
     public void spawn_BP()
     {
-        Instantiate(bluePrint,parent);
+        Instantiate(bpSolarArray, parent);
     }
+
+    public void spawn_BP_batteryP()
+    {
+        Instantiate(bpBattery, parent);
+    }
+
 }
