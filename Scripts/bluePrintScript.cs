@@ -37,6 +37,10 @@ public class bluePrintScript : MonoBehaviour
             {
                 placement.y = 1.0f;
             }
+            else if (prefabName == "RR_GeoThermalPlant")
+            {
+                placement.y = 0.5f;
+            }
 
             placement.x = Mathf.Floor(transform.position.x / gridSize) * gridSize;
             

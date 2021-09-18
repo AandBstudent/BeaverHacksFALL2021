@@ -8,6 +8,7 @@ public class build_SolarArray : MonoBehaviour
     public GameObject bpBattery;
     public GameObject bpWindTurbine;
     public GameObject bpNuclearPowerPlant;
+    public GameObject bpGeothermalPlant;
     public Transform parent;
 
    /* void Update()
@@ -37,8 +38,14 @@ public class build_SolarArray : MonoBehaviour
 
     public void spawn_BP_powerPlant()
     {
-        MousePosition3D.buildPlaced += 0.5f;
+        MousePosition3D.buildPlaced += 3.5f;
         Instantiate(bpNuclearPowerPlant, parent);
+    }
+
+    public void spawn_BP_geothermalPlant()
+    {
+        MousePosition3D.buildPlaced += 3.5f;
+        Instantiate(bpGeothermalPlant, parent);
     }
 
 }
