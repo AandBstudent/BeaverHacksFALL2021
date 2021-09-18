@@ -6,8 +6,12 @@ using UnityEngine.EventSystems;
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private static LTDescr delay;
-    public string content;
+
     public string header;
+
+    [Multiline()]
+    public string content;
+    
 
     public void OnPointerEnter(PointerEventData eventData)
     {

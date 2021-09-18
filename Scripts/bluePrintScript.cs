@@ -7,9 +7,11 @@ public class bluePrintScript : MonoBehaviour
 
     public GameObject prefab;
     public GameObject textPrefab;
+    public Earth earth;
     public int buildCost;
     public int watt;
     public float capacity;
+    //int destruction;
 
     Vector3 placement;
     float gridSize = 1;
@@ -24,22 +26,27 @@ public class bluePrintScript : MonoBehaviour
             if (prefabName == "RR_solar_array")
             {
                 placement.y = 0.5f;
+                //destruction = 1;
             }
             else if (prefabName == "RR_battery")
             {
                 placement.y = 0.25f;
+                //destruction = 5;
             }
             else if (prefabName == "RR_windTurbine")
             {
                 placement.y = 1.5f;
+                //destruction = 2;
             }
             else if (prefabName == "RR_NuclearPlant")
             {
                 placement.y = 1.0f;
+                //destruction = 10;
             }
             else if (prefabName == "RR_GeoThermalPlant")
             {
                 placement.y = 0.5f;
+                //destruction = 1;
             }
 
             placement.x = Mathf.Floor(transform.position.x / gridSize) * gridSize;
@@ -55,6 +62,8 @@ public class bluePrintScript : MonoBehaviour
             WattManager.wattTotal += watt;
             EnergyManager.energyTotal += (float) watt / 1000;
             CapacityTracker.capacityTotal += capacity;
+            //earth.currentHealth -= destruction;
+            //earth.healthBar.SetHealth(earth.currentHealth);
             Destroy(gameObject);
         }
 
