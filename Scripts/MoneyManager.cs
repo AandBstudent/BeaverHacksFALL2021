@@ -15,7 +15,7 @@ public class MoneyManager : MonoBehaviour
     {
         text = GetComponent<Text>();
 
-        //score = budget;
+        score = 0;
     }
 
     public void SetBudget()

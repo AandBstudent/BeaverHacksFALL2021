@@ -39,6 +39,12 @@ public class CameraController : MonoBehaviour
     {
         HandleMouseInput();
         HandleMovenmentInput();
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
 
     void HandleMouseInput()

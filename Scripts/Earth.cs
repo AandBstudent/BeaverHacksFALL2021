@@ -23,12 +23,18 @@ public class Earth : MonoBehaviour
         {
             TakeDamage(20);
         }
-        if (currentHealth < maxHealth)
+        if (currentHealth < maxHealth && currentHealth >= 0)
         {
             currentHealth += 1 * Time.deltaTime ;
         }
         
         healthBar.SetHealth(currentHealth);
+
+        if(currentHealth < 0)
+        {
+            // Game Over
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     void TakeDamage(float damage)
