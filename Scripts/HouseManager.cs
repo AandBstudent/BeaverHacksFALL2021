@@ -7,6 +7,8 @@ public class HouseManager : MonoBehaviour
 {
     public static int house;
 
+    public EnergyBar energyBar;
+
     Text text;
     // Start is called before the first frame update
     void Start()
@@ -26,15 +28,28 @@ public class HouseManager : MonoBehaviour
         else if (EnergyManager.energyTotal >= 1000 && EnergyManager.energyTotal <= 2000)
         {
             house = 1;
+            energyBar.SetMaxEnergy(2000);
+            energyBar.SetMinEnergy(1000);
         }
         else if (EnergyManager.energyTotal >= 2000 && EnergyManager.energyTotal <= 3000)
         {
             house = 2;
+            energyBar.SetMaxEnergy(3000);
+            energyBar.SetMinEnergy(2000);
         }
         else
         {
             house = 3;
+            energyBar.SetMaxEnergy(4000);
+            energyBar.SetMinEnergy(3000);
         }
+
+        /*
+         while(EnergyManager.energyTotal <= maxValue)
+        {
+            
+        }
+         */
         text.text = "Houses Powered: " + house;
     }
 }

@@ -15,13 +15,18 @@ public class MoneyManager : MonoBehaviour
     {
         text = GetComponent<Text>();
 
-        score = budget;
+        //score = budget;
+    }
+
+    public void SetBudget()
+    {
+
     }
 
     // Update is called once per frame
     void Update()
     {
         score += Mathf.Round(ProfitTracker.totalProfit * 100.0f) *0.01f* Time.deltaTime;
-        text.text = "Budget: $ " + Mathf.Round(score * 100.0f) * 0.01f;
+        text.text = "Budget: $ " + Mathf.Round(score);
     }
 }

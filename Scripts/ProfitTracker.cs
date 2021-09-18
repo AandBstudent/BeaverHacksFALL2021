@@ -24,7 +24,7 @@ public class ProfitTracker : MonoBehaviour
 
         if (totalProfit < 1000000000)
         {
-            text.text = "Profit: $" +  Mathf.Round(totalProfit * 100.0f) * 0.01f + "/hr";
+            text.text = "Profit: $" +  Mathf.Round(totalProfit) + "/hr";
         }
         else
         {

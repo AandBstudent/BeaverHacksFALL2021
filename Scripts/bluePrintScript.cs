@@ -33,6 +33,10 @@ public class bluePrintScript : MonoBehaviour
             {
                 placement.y = 1.5f;
             }
+            else if (prefabName == "RR_NuclearPlant")
+            {
+                placement.y = 1.0f;
+            }
 
             placement.x = Mathf.Floor(transform.position.x / gridSize) * gridSize;
             

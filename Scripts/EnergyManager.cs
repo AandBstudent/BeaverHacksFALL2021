@@ -7,6 +7,8 @@ public class EnergyManager : MonoBehaviour
 {
     public static float energyTotal;
 
+    public EnergyBar energyBar;
+
     Text text;
     
     void Awake()
@@ -14,11 +16,13 @@ public class EnergyManager : MonoBehaviour
         text = GetComponent<Text>();
 
         energyTotal = 0;
+        energyBar.SetMaxEnergy(1000);
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = "Energy: " + Mathf.Round(energyTotal *100.0f)*0.01f + " kWh";
+        text.text = "Energy: " + Mathf.Round(energyTotal) + " kWh";
+        energyBar.SetEnergy(energyTotal);
     }
 }
